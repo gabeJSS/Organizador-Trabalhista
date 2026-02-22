@@ -349,7 +349,7 @@ class App(_Base):
                 ).pack(anchor="w", padx=8, pady=(4,0))
 
     # ──────────────────────────────────────────────────────────────────────────
-    # CONFIGURAÇÕES GERAIS
+    # Seção - Configs
     # ──────────────────────────────────────────────────────────────────────────
 
     def _secao_config(self):
@@ -378,7 +378,7 @@ class App(_Base):
                  ).pack(side="left")
 
     # ──────────────────────────────────────────────────────────────────────────
-    # SEÇÃO: HOLERITE / COMPROVANTE / CARTÃO PONTO
+    # Seção - Holerite, Cartão-Ponto e Comprovante
     # ──────────────────────────────────────────────────────────────────────────
 
     def _secao_holerite(self):
@@ -400,7 +400,7 @@ class App(_Base):
                   lambda: threading.Thread(target=self._run_holerite, daemon=True).start())
 
     # ──────────────────────────────────────────────────────────────────────────
-    # SEÇÃO: FGTS + NF/BOLETO/RECIBO (JSON de CNPJ compartilhado)
+    # Seção - FGTS + NF
     # ──────────────────────────────────────────────────────────────────────────
 
     def _secao_fgts_nf(self):
@@ -442,7 +442,7 @@ class App(_Base):
                   lambda: threading.Thread(target=self._run_nf_boleto, daemon=True).start())
 
     # ──────────────────────────────────────────────────────────────────────────
-    # SEÇÃO: EXTRATO MENSAL (do contador)
+    # Seção - Extrato Mensal
     # ──────────────────────────────────────────────────────────────────────────
 
     def _secao_extrato(self):
@@ -461,7 +461,7 @@ class App(_Base):
                   lambda: threading.Thread(target=self._run_extrato, daemon=True).start())
 
     # ──────────────────────────────────────────────────────────────────────────
-    # SEÇÃO: FGTS GERAIS / CERTIDÕES (distribuir para todas as pastas)
+    # Seção - FGTS, Certidões e DCTFWeb
     # ──────────────────────────────────────────────────────────────────────────
 
     def _secao_certidoes(self):
@@ -484,7 +484,7 @@ class App(_Base):
                   lambda: threading.Thread(target=self._run_certidoes, daemon=True).start())
 
     # ──────────────────────────────────────────────────────────────────────────
-    # SEÇÃO: MESCLAR PASTAS
+    # Seção - Mescla de Pastas
     # ──────────────────────────────────────────────────────────────────────────
 
     def _secao_mescla(self):
@@ -500,7 +500,7 @@ class App(_Base):
                   lambda: threading.Thread(target=self._run_mescla, daemon=True).start())
 
     # ──────────────────────────────────────────────────────────────────────────
-    # ABA: RELATÓRIO / AUDITORIA
+    # Aba de Relatório/Auditoria
     # ──────────────────────────────────────────────────────────────────────────
 
     def _build_aba_relatorio(self, parent):
@@ -574,9 +574,6 @@ class App(_Base):
             initialfile="relatorio_auditoria.xlsx")
         if p: self.rel_saida_var.set(p)
 
-    # ══════════════════════════════════════════════════════════════════════════
-    # HELPERS COMUNS
-    # ══════════════════════════════════════════════════════════════════════════
 
     def _get_periodo(self):
         ano   = self.ano_var.get().strip()
@@ -594,7 +591,7 @@ class App(_Base):
             w.write(fh)
 
     # ══════════════════════════════════════════════════════════════════════════
-    # LÓGICA: HOLERITE / COMPROVANTE / CARTÃO PONTO
+    # Holerite, Comprovante e Cartão Ponto
     # ══════════════════════════════════════════════════════════════════════════
 
     def _run_holerite(self):
@@ -694,7 +691,7 @@ class App(_Base):
             messagebox.showerror("Erro", str(e))
 
     # ══════════════════════════════════════════════════════════════════════════
-    # LÓGICA: FGTS
+    # FGTS
     # ══════════════════════════════════════════════════════════════════════════
 
     def _run_fgts(self):
@@ -733,7 +730,7 @@ class App(_Base):
             messagebox.showerror("Erro",str(e))
 
     # ══════════════════════════════════════════════════════════════════════════
-    # LÓGICA: NF / BOLETO / RECIBO
+    #  NFs, Boleto e Recibos
     # ══════════════════════════════════════════════════════════════════════════
 
     def _run_nf_boleto(self):
@@ -790,7 +787,7 @@ class App(_Base):
 
 
     # ══════════════════════════════════════════════════════════════════════════
-    # LÓGICA: MESCLAR PASTAS
+    # Mesclar Pastas
     # ══════════════════════════════════════════════════════════════════════════
 
     def _run_mescla(self):
@@ -824,7 +821,7 @@ class App(_Base):
             messagebox.showerror("Erro",str(e))
 
     # ══════════════════════════════════════════════════════════════════════════
-    # LÓGICA: RELATÓRIO DE AUDITORIA
+    # Gerador de Relatório
     # ══════════════════════════════════════════════════════════════════════════
 
     # Subpastas esperadas por condomínio (nível do mês)
